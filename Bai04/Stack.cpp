@@ -16,7 +16,13 @@ struct List
     Node *pTail;
 };
 
-void PushArray(int &n, int a[])
+struct PhanSo
+{
+    int tu;
+    int mau;
+};
+
+void PushArray(int &n, PhanSo a[])
 {
     // Insert the element into the end of array
     if (n == arraySize)
@@ -26,18 +32,22 @@ void PushArray(int &n, int a[])
 
     else
     {
-        int x;
-        cout << "\nnhap vao phan tu : ";
-        cin >> x;
+        int tu, mau;
+        cout << "\nnhap vao tu : ";
+        cin >> tu;
 
-        a[n] = x;
+        cout <<"\nnhap vao mau : ";
+        cin >> mau;
+
+        a[n].tu = tu;
+        a[n].mau = mau;
         n++;
     }
 }
 
-void DeleteElement(int &n, int a[])
+void DeleteElement(int &n, PhanSo a[])
 {
-    // Delete element in the end 
+    // Delete element in the end
 
     for (int i = n - 1; i < n - 1; i++)
     {
@@ -46,19 +56,20 @@ void DeleteElement(int &n, int a[])
     n--;
 }
 
-int PopArray(int &n, int a[])
+PhanSo PopArray(int &n, PhanSo a[])
 {
     // Get the end element and Delete it
-    int result = -1;
+    PhanSo result;
+    result.mau = -1;
     if (n != 0)
     {
-        int result = a[n - 1];
+        result = a[n - 1];
         return result;
     }
-    return -1;
+    return result;
 }
 
-void DeleteAllArray(int &n, int a[])
+void DeleteAllArray(int &n, PhanSo a[])
 {
     // Delete all elements in the array
     while (n != 0)
@@ -67,7 +78,7 @@ void DeleteAllArray(int &n, int a[])
     }
 }
 
-void GetArray(int a[])
+void GetArray(PhanSo a[])
 {
     // Create the first element
     int n = 0;
@@ -88,16 +99,16 @@ void GetArray(int a[])
 
         else if (menu == 2)
         {
-            int top = PopArray(n, a);
+            PhanSo top = PopArray(n, a);
 
-            if (top == -1)
+            if (top.mau == -1)
             {
                 cout << "\nDanh sach rong\n";
             }
             else
             {
                 cout << "\n"
-                     << top << "\n";
+                     << top.tu<<"/"<<top.mau << "\n";
                 DeleteElement(n, a);
             }
         }
@@ -184,7 +195,7 @@ void PopList(List &L)
 
     if (IsEmptyList(L) == 0)
     {
-        cout << L.pHead->tu<<"/"<<L.pHead->mau<<"\n";
+        cout << L.pHead->tu << "/" << L.pHead->mau << "\n";
         L.pHead = L.pHead->pNext;
     }
     else
@@ -233,7 +244,7 @@ void GetList(List &stack)
 
             cout << "\nNhap vao tu : ";
             cin >> tu;
-            cout<<"\nNhap vao mau: ";
+            cout << "\nNhap vao mau: ";
             cin >> mau;
 
             Node *P = CreateNode(tu, mau);
@@ -270,7 +281,7 @@ void GetList(List &stack)
     }
 }
 
-void CreateMenu(List &stackList, int stackArray[])
+void CreateMenu(List &stackList, PhanSo stackArray[])
 {
     int n;
     cout << "Nhap menu: ";
@@ -290,7 +301,7 @@ void CreateMenu(List &stackList, int stackArray[])
 
 int main()
 {
-    int stackArray[arraySize];
+    PhanSo stackArray[arraySize];
     List stackList;
 
     CreateMenu(stackList, stackArray);
