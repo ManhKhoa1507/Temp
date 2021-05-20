@@ -29,10 +29,10 @@ PhanSo DanhSach::TinhTong()
 
 	for (int i = 1; i < n; i++)
 	{
-		int bcln = ps[i].GetMau() * c.GetMau() / c.UCLN(ps[i].GetMau(), c.GetMau());
+		int bcnn = ps[i].GetMau() * c.GetMau() / c.UCLN(ps[i].GetMau(), c.GetMau());
 
-		c.SetTu((bcln / c.GetMau()*c.GetTu()) + (bcln / ps[i].GetMau())*ps[i].GetTu());
-		c.SetMau(bcln);
+		c.SetTu((bcnn / c.GetMau()*c.GetTu()) + (bcnn / ps[i].GetMau())*ps[i].GetTu());
+		c.SetMau(bcnn);
 	}
 
 	return c;
