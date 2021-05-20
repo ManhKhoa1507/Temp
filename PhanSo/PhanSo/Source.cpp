@@ -1,29 +1,18 @@
 #include<iostream>
 #include"PhanSo.h"
+#include "DanhSach.h"
 
 using namespace std;
 
 int main()
 {
-	PhanSo a, b, tong, hieu, nhan, chia;
-	cin >> a;
-	cin >> b;
+	DanhSach ds;
+	
+	ds.NhapDanhSach();
 
-	tong = a + b;
-	cout << tong;
+	cout << ds.TinhTong();
 
-	hieu = a - b;
-	cout << hieu;
+	ds.XuatDanhSach();
 
-	nhan = a * b;
-	cout << nhan;
-
-	chia = a / b;
-	cout << chia;
-
-	if (a == b) cout << 1 << endl;
-	else cout << 0 << endl;
-
-	if (a != b) cout << 1 << endl;
-	else cout << 0;
+	return 0;
 }

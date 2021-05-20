@@ -21,9 +21,15 @@
     <ClCompile Include="PhanSo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DanhSach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhanSo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DanhSach.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

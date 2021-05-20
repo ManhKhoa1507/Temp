@@ -96,3 +96,31 @@ bool PhanSo::operator!=(PhanSo& a)
 	if (this->GiaTri() != a.GiaTri()) return 1;
 	else return 0;
 }
+
+PhanSo PhanSo::Cong(PhanSo a)
+{
+	PhanSo c;
+	c.mau = (a.mau * this->mau) / this->UCLN(a.mau, this->mau);
+	c.tu = (c.mau / a.tu) + (c.mau / this->tu);
+	return c;
+}
+
+void PhanSo::SetTu(int tu)
+{
+	this->tu = tu;
+}
+
+void PhanSo::SetMau(int mau)
+{
+	this->mau = mau;
+}
+
+int PhanSo::GetTu()
+{
+	return this->tu;
+}
+
+int PhanSo::GetMau()
+{
+	return this->mau;
+}

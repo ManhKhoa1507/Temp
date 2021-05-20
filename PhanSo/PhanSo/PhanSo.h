@@ -28,5 +28,13 @@ public:
 
 	friend  istream& operator >> (istream& is, PhanSo& phanSo);
 	friend  ostream& operator << (ostream& os, PhanSo phanSo);
+
+	PhanSo Cong(PhanSo);
+
+	void SetTu(int);
+	void SetMau(int);
+
+	int GetTu();
+	int GetMau();
 };
 
