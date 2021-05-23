@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{02D0ED9D-AD36-4DEB-A67F-527D7E74DD1A}</ProjectGuid>
+    <ProjectGuid>{A732CF69-E24E-41ED-B58E-5452DA9FAAD6}</ProjectGuid>
     <RootNamespace>PhanSo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -138,12 +138,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DanhSach.cpp" />
+    <ClCompile Include="DSPhanSo.cpp" />
     <ClCompile Include="PhanSo.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DanhSach.h" />
+    <ClInclude Include="DSPhanSo.h" />
     <ClInclude Include="PhanSo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

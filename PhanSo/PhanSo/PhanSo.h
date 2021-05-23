@@ -1,40 +1,26 @@
 #pragma once
-#include<iostream>
-using namespace std;
-
 class PhanSo
 {
-private :
+private:
 	int tu;
 	int mau;
-
 public:
+	// Constructor
 	PhanSo();
 	PhanSo(int);
 	PhanSo(int, int);
 
-	PhanSo(const PhanSo&);
-
-	int UCLN(int, int);
-	float GiaTri();
-
-	PhanSo operator+(const PhanSo&);
-	PhanSo operator-(const PhanSo&);
-	PhanSo operator*(const PhanSo&);
-	PhanSo operator/(const PhanSo&);
-
-	bool operator == (PhanSo&);
-	bool operator != (PhanSo&);
-
-	friend  istream& operator >> (istream& is, PhanSo& phanSo);
-	friend  ostream& operator << (ostream& os, PhanSo phanSo);
-
-	PhanSo Cong(PhanSo);
-
+	void SetPhanSo(int, int);
 	void SetTu(int);
 	void SetMau(int);
-
 	int GetTu();
 	int GetMau();
-};
 
+	int UCLN(int, int);
+	void ChuanHoa();
+	void RutGon();
+	float KetQua();
+
+	void Nhap();
+	void Xuat();
+};

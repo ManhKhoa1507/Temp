@@ -1,108 +1,11 @@
 #include "PhanSo.h"
-PhanSo::PhanSo()
-{
-	tu = 0;
-	mau = 0;
-}
+#include <iostream>
+using namespace std;
 
-int PhanSo::UCLN(int a, int b)
-{
-	int tmp;
-	while (b != 0) {
-		tmp = a % b;
-		a = b;
-		b = tmp;
-	}
-	return a;
-}
-
-float PhanSo::GiaTri()
-{
-	return tu / mau;
-}
-
-PhanSo::PhanSo(int tu)
-{
-	this->tu = tu;
-}
-
-PhanSo::PhanSo(int tu, int mau)
+void PhanSo::SetPhanSo(int tu, int mau)
 {
 	this->tu = tu;
 	this->mau = mau;
-}
-
-PhanSo::PhanSo(PhanSo const& phanSo)
-{
-	this->tu = phanSo.tu;
-	this->mau = phanSo.mau;
-}
-
-PhanSo PhanSo::operator+(const PhanSo& a)
-{
-	PhanSo c;
-	c.mau = (a.mau * this->mau) / this->UCLN(a.mau, this->mau);
-	c.tu = (c.mau / a.tu) + (c.mau / this->tu);
-	return c;
-}
-
-PhanSo PhanSo::operator-(const PhanSo& a)
-{
-	PhanSo c;
-	c.mau = (a.mau * this->mau) / this->UCLN(a.mau, this->mau);
-	c.tu = (c.mau / a.tu) - (c.mau / this->tu);
-	return c;
-}
-
-PhanSo PhanSo::operator*(const PhanSo& a)
-{
-	PhanSo c;
-	c.tu = a.tu * this->tu;
-	c.mau = a.mau * this->mau;
-	return c;
-}
-
-PhanSo PhanSo :: operator/(const PhanSo& a)
-{
-	PhanSo c;
-	c.tu = a.tu * this->mau;
-	c.mau = a.mau * this->tu;
-	return c;
-}
-
-istream& operator>>(istream& is, PhanSo& a)
-{
-	cout << "\ntu : ";
-	is >> a.tu;
-	cout << "\nmau: ";
-	is >> a.mau;
-	return is;
-}
-
-ostream& operator <<(ostream& os, PhanSo a)
-{
-	os << endl << a.tu << " / " << a.mau << endl;
-	return os;
-}
-
-bool PhanSo::operator==(PhanSo& a)
-{
-	if (this->GiaTri() == a.GiaTri()) return 1;
-	else return 0;
-}
-
-bool PhanSo::operator!=(PhanSo& a)
-{
-	if (this->GiaTri() != a.GiaTri()) return 1;
-	else return 0;
-}
-
-PhanSo PhanSo::Cong(PhanSo a)
-{
-	PhanSo c;
-	c.mau = (a.mau * this->mau) / this->UCLN(a.mau, this->mau);
-	c.tu = (c.mau / a.tu) + (c.mau / this->tu);
-	return c;
 }
 
 void PhanSo::SetTu(int tu)
@@ -115,12 +18,78 @@ void PhanSo::SetMau(int mau)
 	this->mau = mau;
 }
 
+PhanSo::PhanSo()
+{
+	SetPhanSo(0, 1);
+}
+
+PhanSo::PhanSo(int tu)
+{
+	SetPhanSo(tu, 1);
+}
+
+PhanSo::PhanSo(int tu, int mau)
+{
+	SetPhanSo(tu, mau);
+}
+
 int PhanSo::GetTu()
 {
-	return this->tu;
+	return tu;
 }
 
 int PhanSo::GetMau()
 {
-	return this->mau;
+	return mau;
+}
+
+void PhanSo::Nhap()
+{
+	cout << "Nhap tu so: ";
+	cin >> tu;
+
+	cout << "Nhap mau so: ";
+	cin >> mau;
+	cout << endl;
+}
+
+void PhanSo::Xuat()
+{
+	cout << tu << "/" << mau;
+}
+
+int PhanSo::UCLN(int tu, int mau)
+{
+	int r;
+	while (tu % mau != 0)
+	{
+		r = tu % mau;
+		tu = mau;
+		mau = r;
+	}
+	return mau;
+}
+
+void PhanSo::RutGon()
+{
+	float temp = UCLN(tu, mau);
+	return SetPhanSo(tu / temp, mau / temp);
+}
+
+void PhanSo::ChuanHoa()
+{
+	if (tu < 0 && mau < 0)
+	{
+		SetPhanSo(abs(tu), abs(mau));
+	}
+
+	if (tu > 0 && mau < 0)
+	{
+		SetPhanSo(-tu, abs(mau));
+	}
+}
+
+float PhanSo::KetQua()
+{
+	return (float)GetTu() / GetMau();
 }
