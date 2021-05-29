@@ -18,5 +18,8 @@ public :
 
 	Time operator+(int);
 	Time operator-(int);
+
+	Time operator++(int);
+	Time operator--(int);
 };
 

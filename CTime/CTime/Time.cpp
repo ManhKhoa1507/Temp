@@ -67,15 +67,15 @@ Time Time::operator-(int a)
 	Time result(this->gio, this->phut, this->giay);
 
 	result.giay = this->giay - a;
-	if (result.giay <= 0)
+	if (result.giay < 0)
 	{
 		result.giay = 60 - abs(result.giay);
 		result.phut = this->phut - 1;
-		if (result.phut <= 0)
+		if (result.phut < 0)
 		{
 			result.phut = 60 - abs(result.phut);
 			result.gio = this->gio - 1;
-			if (result.gio >= 24)
+			if (result.gio < 24)
 			{
 				result.gio = 24 - abs(result.gio);
 			}
@@ -84,3 +84,46 @@ Time Time::operator-(int a)
 	return result;
 }
 
+Time Time::operator++(int)
+{
+	Time result(this->gio, this->phut, this->giay);
+
+	result.giay = this->giay + 1;
+	if (result.giay >= 60)
+	{
+		result.giay = result.giay - 60;
+		result.phut = this->phut + 1;
+		if (result.phut >= 60)
+		{
+			result.phut = result.phut - 60;
+			result.gio = this->gio + 1;
+			if (result.gio >= 24)
+			{
+				result.gio = result.gio - 24;
+			}
+		}
+	}
+	return result;
+}
+
+Time Time::operator--(int)
+{
+	Time result(this->gio, this->phut, this->giay);
+
+	result.giay = this->giay - 1;
+	if (result.giay < 0)
+	{
+		result.giay = 60 - abs(result.giay);
+		result.phut = this->phut - 1;
+		if (result.phut < 0)
+		{
+			result.phut = 60 - abs(result.phut);
+			result.gio = this->gio - 1;
+			if (result.gio < 24)
+			{
+				result.gio = 24 - abs(result.gio);
+			}
+		}
+	}
+	return result;
+}
