@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	DaThuc a, b, cong, tru;
-	
+
 	a.Nhap();
 	a.Xuat();
 	
